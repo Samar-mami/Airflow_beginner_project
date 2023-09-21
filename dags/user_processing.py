@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from airflow import DAG
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.operators.python import PythonOperator
@@ -19,7 +18,7 @@ def _process_user(ti):
         'country': user['location']['country'],
         'username': user['login']['username'],
         'password': user['login']['password'],
-        'email': user['email']})
+        'email': user['email'] })
     processed_user.to_csv('/tmp/processed_user.csv', index=None, header=False)
 
 
